@@ -14,7 +14,8 @@ pip install xlwt
 
 # request與BeautifulSoup4解析
 
-先用request去查看網頁，看看從server端回傳的內容長怎樣，可以用res.text去檢視他
+先用request去查看網頁，看看從server端回傳的內容長怎樣，可以用res.text去檢視他，然後用BeautifulSoup去解析，BeautifulSoup解析方式有很多種，像是select、find_all等等，依據網頁回傳的內容再去選擇。
+
 ```python
 res = requests.get(URL) # URL
 soup = BeautifulSoup(res.text, "html.parser") # 解析器
