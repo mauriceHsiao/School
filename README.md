@@ -1,32 +1,44 @@
-Hsiao's Data Science from Scratch Notebook
+大學科大四技二專交叉查榜
 =========================
 
-from:__[Data Science from Scratch](http://joelgrus.com/2015/04/26/data-science-from-scratch-first-principles-with-python/)__
+網址：http://www.com.tw
 
+# 安裝套件：
 
-## Book of Contents(Finish Time)
-1. Introduction (2017/03/09)
-2. A Crash Course in Python (2017/03/16)
-3. [Visualizing Data](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/visualizing_data.py) (2017/03/23)
-4. [Linear Algebra](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/linear_algebra.py) (2017/03/30) 
-5. [Statistics](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/statistics.py) (2017/03/30)
-6. [Probability](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/probability.py) (2017/04/06)
-7. [Hypothesis and Inference](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/hypothesis_and_inference.py) (2017/04/06)
-8. [Gradient Descent](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/gradient_descent.py)  (2017/04/13) 
-9. [Getting Data](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/getting_data.py) (2017/04/27) 
-10. [Working With Data](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/working_with_data.py)
-11. [Machine Learning](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/machine_learning.py)
-12. [k-Nearest Neighbors](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/nearest_neighbors.py)
-13. [Naive Bayes](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/naive_bayes.py)
-14. [Simple Linear Regression](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/simple_linear_regression.py)
-15. [Multiple Regression](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/multiple_regression.py)
-16. [Logistic Regression](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/logistic_regression.py)
-17. [Decision Trees](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/decision_trees.py)
-18. [Neural Networks](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/neural_networks.py)
-19. [Clustering](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/clustering.py)
-20. [Natural Language Processing](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/natural_language_processing.py)
-21. [Network Analysis](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/network_analysis.py)
-22. [Recommender Systems](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/recommender_systems.py)
-23. [Databases and SQL](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/databases.py)
-24. [MapReduce](https://github.com/joelgrus/data-science-from-scratch/blob/master/code/mapreduce.py)
-25. Go Forth And Do Data Science
+Python3.6
+```
+pip install requests
+pip install BeautifulSoup4
+pip install xlwt
+```
+
+# request與BeautifulSoup4解析
+
+先用request去查看網頁，看看從server端回傳的內容長怎樣，可以用res.text去檢視他
+```python
+res = requests.get(URL) # URL
+soup = BeautifulSoup(res.text, "html.parser") # 解析器
+print(soup)
+```
+
+# 正規表達式
+用正規表達式抓資料內容，先撈出學校的tag(re1)，再從tag中找出學校名字(re3)，再用re2找到學生最後選擇哪個學校，最後用re5把它們分隔開來，主要從requests回傳的網址中查看，
+也可以從瀏覽器的開發人員工具中看，但不一定正確。
+
+. 代表任意字元
+
+\+ 代表1個以上
+
+\w 代表任意字(除了符號、空白)
+
+\d 代表任意數字
+
+[\u4e00-\u9fa5] 代表任意中文
+
+```python
+re1=r'(.+)</a></div></td>' # 抓出學校tag
+re2=r'<img align="absbottom" alt="分發錄取" border="0" height="23" src="images/putdep1.png" title="分發錄取" width="23"/>' # 抓出有沒有上tag
+re3=r'[\u4e00-\u9fa5]+' # 解析學校tag的校名
+re4=r'\w\d+' # 甄試結果，正幾備幾
+re5=r'<td scope="row" width="7%"><div align="right">' # 每個人的區隔
+```
