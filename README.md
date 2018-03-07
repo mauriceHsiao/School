@@ -70,5 +70,5 @@ wb.save('example.xls')
 ```
 
 # License
-The [MIT](LICENSE) License
+The [License](LICENSE)
 
