@@ -12,6 +12,14 @@ pip install BeautifulSoup4
 pip install xlwt
 ```
 
+# 使用方式
+
+在 下面輸入要爬的大學，例如虎尾科技大學...等等
+
+```
+SchoolAll('http://www.com.tw/cross/university_1107_105.html','虎尾科技大學') # 虎尾科技大學
+```
+
 # request與BeautifulSoup4解析
 
 先用request去查看網頁，看看從server端回傳的內容長怎樣，可以用res.text去檢視他，然後用BeautifulSoup去解析，BeautifulSoup解析方式有很多種，像是select、find_all等等，依據網頁回傳的內容再去選擇。
