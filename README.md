@@ -61,3 +61,6 @@ ws.write(2, 0, C)
 wb.save('example.xls')
 ```
 
+# License
+The [MIT](LICENSE) License
+
