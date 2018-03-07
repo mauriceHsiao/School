@@ -14,7 +14,7 @@ pip install xlwt
 
 # 使用方式
 
-在 下面輸入要爬的大學，例如虎尾科技大學...等等
+在 105.py 下面輸入要爬的大學，例如虎尾科技大學...等等
 
 ```
 SchoolAll('http://www.com.tw/cross/university_1107_105.html','虎尾科技大學') # 虎尾科技大學
